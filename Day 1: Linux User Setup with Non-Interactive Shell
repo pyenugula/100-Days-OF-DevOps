@@ -1,0 +1,32 @@
+[steve@stapp02 ~]$ sudo useradd -m -s /bin/bash javed
+
+Let’s break down the options:
+
+sudo: Executes the command with administrator privileges (required to create users).
+useradd: The command to create a new user account.
+-m: Creates the user's home directory (e.g., /home/javed).
+-s /bin/bash: Sets the user's default shell to /bin/bash. This ensures a standard, interactive shell is provided if needed.
+javed: The username you’re creating.
+
+[steve@stapp02 ~]$ sudo usermod -s /sbin/nologin javed
+
+[steve@stapp02 ~]$ id javed
+uid=1001(javed) gid=1001(javed) groups=1001(javed)
+[steve@stapp02 ~]$ sudo passwd javed
+Changing password for user javed.
+New password: 
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+
+[steve@stapp02 ~]$ ssh javed@stapp02
+The authenticity of host 'stapp02 (10.244.244.189)' can't be established.
+ED25519 key fingerprint is SHA256:suaGiEUxq6D/7VWbNwNEuYdCzpn3WimoBo/ta+FHGJY.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'stapp02' (ED25519) to the list of known hosts.
+javed@stapp02's password: 
+This account is currently not available.
+Connection to stapp02 closed.
+
+[steve@stapp02 ~]$ getent passwd javed
+javed:x:1001:1001::/home/javed:/sbin/nologin
