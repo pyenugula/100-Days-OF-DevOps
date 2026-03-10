@@ -1,0 +1,16 @@
+Create a user named yousuf on App Server 3 in Stratos Datacenter. Set the expiry date to 2027-02-17, ensuring the user is created in lowercase as per standard protocol.
+
+
+Create the User with Expiry Date
+Use the useradd command with the -e option for account expiry.
+
+[banner@stapp03 ~]$ sudo useradd -m -s /bin/bash -e 2027-02-17 yousuf 
+
+[yousuf@stapp03 ~]$ chage -l yousuf
+Last password change                                    : Mar 10, 2026
+Password expires                                        : never
+Password inactive                                       : never
+Account expires                                         : Feb 17, 2027
+Minimum number of days between password change          : 0
+Maximum number of days between password change          : 99999
+Number of days of warning before password expires       : 7
