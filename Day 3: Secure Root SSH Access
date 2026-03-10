@@ -1,0 +1,35 @@
+
+
+1️⃣ Connect to Each App Server
+You need to SSH into each app server in the Stratos Datacenter:
+
+ssh tony@stapp01
+ssh steve@stapp02
+ssh banner@stapp03
+
+2️⃣ Backup the SSH Config File
+Always backup before editing critical files:
+
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+
+3️⃣ Edit the SSH Configuration
+Open the SSH config in your preferred editor:
+
+sudo vi /etc/ssh/sshd_config
+
+Find the line:
+#PermitRootLogin yes
+Change it to:
+PermitRootLogin no
+
+4️⃣ Test the SSH Configuration
+Before restarting SSH, test the config to avoid locking yourself out:
+
+sudo sshd -t
+
+5️⃣ Restart the SSH Service
+Apply the changes:
+
+sudo systemctl restart sshd
+
+grep PermitRootLogin /etc/ssh/sshd_config
